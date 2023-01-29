@@ -26,6 +26,6 @@ public class Main {
         predeterminada la estructura más básica de este, pudiendo personalizarlo en función de lo que nos interese en el momento o de los usos que se le vayan a dar. Como contras a este método,
         está la necesidad de realizar un diseño previo muy exhaustivo del esquema que tendría la aplicación o programa, con una(s) clase(s) padre(s) que pueda(n) abarcar todas
         las casuísticas de las posibles clases hijas para evitar futuros conflictos. Para ello, es posible que nos interese dejar las peculiaridades a las clases hijas y construir
-        clases padre lo más genéricas posible.*/
+        clases padre lo más genéricas posible, solo con aquellos atributos que sepamos seguro que van a compartir todas las hijas.*/
     }
 }
