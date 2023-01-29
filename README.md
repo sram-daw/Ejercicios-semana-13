@@ -1,4 +1,4 @@
-#Ejercicios Programación: Semana 13
+# Ejercicios Programación: Semana 13
 
 ### Ejercicio 1
 Crea una clase “Entidad” con los atributos “vida” , “ataque” y “defensa” de tipo entero y “nombre” tipo cadena de caracter.
