@@ -16,6 +16,7 @@ public class Main {
                 int accion = 0;
                 int damage = 0;
                 accion = (int) (Math.random() * (3 - 1 + 1) + 1); //la acción se elige aleatoriamente
+                //en función de la acción hace un tipo de ataque u otro
                 if (accion == 1) {
                     damage = e.turno(accion);
                     System.out.println(e.getNombre() + " ha hecho un ataque normal provocando " + damage + " puntos de daño.");
@@ -26,6 +27,7 @@ public class Main {
                     damage = e.turno(accion);
                     System.out.println(e.getNombre() + " ha usado una habilidad provocando " + damage + " puntos de daño.");
                 }
+                //se restan los puntos de vida al contrincante
                 if (e.getNombre().equals("El Caballero")) {
                     enemigo1.setVida(enemigo1.getVida() - damage);
                     System.out.println("Hornet tiene " + enemigo1.getVida() + " puntos de vida.");
@@ -42,7 +44,7 @@ public class Main {
                     }
                 }
             }
-            if (!isSalir) {
+            if (!isSalir) { //condicion necesaria para que no se ejecute el sout cuando uno de los dos ha perdido.
                 System.out.println("Para continuar el combate pulsa 1. Para pararlo pulsa 2.");
                 inputMenu = inputUsuario.nextInt();
                 inputUsuario.nextLine();
