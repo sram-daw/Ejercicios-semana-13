@@ -16,7 +16,7 @@ public class Jugador extends Entidad {
         } else if (accion == 2) {
             damage = this.getAtaque() * this.nivel + this.experiencia;
         } else if (accion == 3) {
-            damage = this.getDefensa() + this.nivel;
+            damage = this.getDefensa() * this.nivel;
         }
         return damage;
     }

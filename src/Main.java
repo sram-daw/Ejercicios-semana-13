@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Jugador jugador1 = new Jugador(700, 10, 9, "El Caballero", 40, 10);
@@ -5,18 +7,48 @@ public class Main {
         Entidad[] arrayEntidades = new Entidad[2];
         arrayEntidades[0] = jugador1;
         arrayEntidades[1] = enemigo1;
+        boolean isSalir = false;
+        Scanner inputUsuario = new Scanner(System.in);
+        int inputMenu = 0;
 
-        for (Entidad e : arrayEntidades) {
-            int accion = 0;
-            accion = (int) (Math.random() * (3 - 1 + 1) + 1); //la acción se elige aleatoriamente
-            if (accion == 1) {
-                System.out.println(e.getNombre() + " ha hecho un ataque normal provocando " + e.turno(accion) + " puntos de daño.");
-            } else if (accion == 2) {
-                System.out.println(e.getNombre() + " ha hecho un ataque cargado provocando " + e.turno(accion) + " puntos de daño.");
-            } else if (accion == 3) {
-                System.out.println(e.getNombre() + " ha usado una habilidad provocando " + e.turno(accion) + " puntos de daño.");
+        while (!isSalir) {
+            for (Entidad e : arrayEntidades) {
+                int accion = 0;
+                int damage = 0;
+                accion = (int) (Math.random() * (3 - 1 + 1) + 1); //la acción se elige aleatoriamente
+                if (accion == 1) {
+                    damage = e.turno(accion);
+                    System.out.println(e.getNombre() + " ha hecho un ataque normal provocando " + damage + " puntos de daño.");
+                } else if (accion == 2) {
+                    damage = e.turno(accion);
+                    System.out.println(e.getNombre() + " ha hecho un ataque cargado provocando " + damage + " puntos de daño.");
+                } else if (accion == 3) {
+                    damage = e.turno(accion);
+                    System.out.println(e.getNombre() + " ha usado una habilidad provocando " + damage + " puntos de daño.");
+                }
+                if (e.getNombre().equals("El Caballero")) {
+                    enemigo1.setVida(enemigo1.getVida() - damage);
+                    System.out.println("Hornet tiene " + enemigo1.getVida() + " puntos de vida.");
+                    if (enemigo1.getVida() <= 0) {
+                        System.out.println("¡Has derrotado a Hornet!");
+                        isSalir = true;
+                    }
+                } else if (e.getNombre().equals("Hornet")) {
+                    jugador1.setVida(jugador1.getVida() - damage);
+                    System.out.println("El Caballero tiene " + jugador1.getVida() + " puntos de vida.");
+                    if (jugador1.getVida() <= 0) {
+                        System.out.println("Hornet te ha vencido.");
+                        isSalir = true;
+                    }
+                }
             }
-
+            if (!isSalir) {
+                System.out.println("Para continuar el combate pulsa 1. Para pararlo pulsa 2.");
+                inputMenu = inputUsuario.nextInt();
+                inputUsuario.nextLine();
+                System.out.println();
+                if (inputMenu == 2) isSalir = true;
+            }
         }
         /*Comentario sobre el comportamiento: Este tipo de construcciones son útiles para evitar repetir código (ahorrando así tiempo y optimizando recursos del ordenador).
         Permite agrupar las clases siguiendo unos criterios determinados, dando como resultado una visión general del proyecto más fácil de entender al estar jerarquizada,
